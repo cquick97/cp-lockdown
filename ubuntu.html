@@ -25,16 +25,16 @@ References<ul>
 <li><a href="#terminal">Terminal</a><br /></li>
 </ul>
 </div>
-<hr><hr>
+<hr>
 <h1>Users and Groups</h1>
 <hr>
 <div id="groups">
 <h2>Groups</h2>
 <h3>Location</h3>
-<ol>
+<ul>
     <li>Open <a href="#terminal">terminal</a></li>
     <li>cat /etc/group</li>
-</ol>
+</ul>
 <h3>Settings</h3>
 <ul>
     <li>Check <a href="#default-groups">Default Groups</a></li>
@@ -45,10 +45,10 @@ References<ul>
 <div id="users">
 <h2>Users</h2>
 <h3>Location</h3>
-<ol>
+<ul>
     <li>Open <a href="#terminal">terminal</a></li>
     <li>cat /etc/passwd</li>
-</ol>
+</ul>
 <h3>Settings</h3>
 <ul>
     <li>Check <a href="#default-users">Default Users</a></li>
@@ -58,6 +58,7 @@ References<ul>
 <hr>
 <div id="default-groups">
 <h2>Default Groups</h2>
+<p> Note: This could change with each Ubuntu version. Not sure which version the fullowing is from.</p>
 <ul>
     <li>root</li>
     <li>daemon</li>
@@ -168,7 +169,7 @@ References<ul>
 </ul>
 <a href="#toc">Table of Contents</a>
 </div>
-<hr><hr>
+<hr>
 <h1>Networking</h1>
 <hr>
 <div id="firewall">
@@ -189,26 +190,31 @@ For example, add rule for TCP 22 for remote access
 <p>iptables -P INPUT DROP</p>
 <p>iptables -P FORWARD DROP</p>
 <p>iptables -P OUTPUT ACCEPT</p>
+<h2>Using UFW (Uncomplicated Firewall) </p>
+<p>sudo ufw allow 22</p>
+<p>sudo ufw default deny</p>
+<p>sudo ufw enable</p>
+This will simply allow port 22, and deny everything else. A lot simpler than iptables. Although for more complex stuff you might want to use iptables.
 <a href="#toc">Table of Contents</a>
 </div>
 <hr>
 <div id="network-connections">
 <h2>Network Connections</h2>
 <h3>View listening network connections</h3>
-<p>netstat -ntulp</p>
+<p>netstat -tulpn</p>
 <h3>View established network connections</h3>
-<p>netstat -ntup</p>
+<p>netstat -tupn</p>
 <a href="#toc">Table of Contents</a>
 </div>
-<hr><hr>
+<hr>
 <h1>Configuration</h1>
 <hr>
 <div id="services">
 <h2>Services</h2>
 <h3>Location</h3>
-<ol>
+<ul>
     <li>Open <a href="#terminal">terminal</a></li>
-</ol>
+</ul>
 <h3>Settings</h3>
 <p>Check status of all services</p>
 <ul>
@@ -228,7 +234,7 @@ For example, add rule for TCP 22 for remote access
 <p>service [service-name] stop</p>
 <p>update-rc.d -f [service] remove</p>
 <h3>Common Services</h3>
-<p>The following services should be disabled if they are not required</p>
+<p>The fullowing services should be disabled if they are not required</p>
 <p>Database<p>
 <ul>
     <li>mysqld</li>
@@ -258,10 +264,10 @@ For example, add rule for TCP 22 for remote access
     <li>avahi-daemon</li>
     <li>bind</li>
     <li>dnsmasq</li>
+    <li>xinetd</li>
     <li>inetd</li>
     <li>sshd</li>
     <li>telnet</li>
-    <li>xinetd</li>
 </ul>
 <p>Printing, Scanning</p>
 <ul>
@@ -289,29 +295,30 @@ For example, add rule for TCP 22 for remote access
 <hr>
 <div id="updates">
 <h2>Updates</h2>
-<ol>
+<ul>
+		<li>Check /etc/apt/sources.list to make sure all necessary repos, especially security, are there and correct.</li>
+		<li>Check for packages daily via the Ubuntu update manager.</li>
     <li>Open <a href="#terminal">terminal</a></li>
-    <li>apt-get update</li>
-    <li>apt-get upgrade</li>
-</ol>
+		<li>sudo apt-get update && sudo apt-get dist-upgrade -y</li>
+</ul>
 <a href="#toc">Table of Contents</a>
 </div>
-<hr><hr>
+<hr>
 <h1>References</h1>
 <hr>
 <div id="terminal">
 <h2>Terminal</h2>
-Option 1
-<ol>
+Option 1 (Using Unity desktop, like in 14.04)
+<ul>
     <li>Press Ubuntu icon button</li>
     <li>Type '<strong>terminal</strong>', press Enter</li>
-</ol>
-Option 2
-<ol>
+</ul>
+Option 2 (Using gnome desktop, like 12.04)
+<ul>
     <li>Click on <strong>Applications</strong> menu</li>
     <li>Go to <strong>Accessories</strong></li>
     <li>Click on <strong>Terminal</strong></li>
-</ol>
+</ul>
 <a href="#toc">Table of Contents</a>
 </div>
 </body>
